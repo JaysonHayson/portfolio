@@ -2670,7 +2670,7 @@ section {
   hyphens: auto;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 
 @media (max-width: 480px) {
