@@ -1,0 +1,32 @@
+# Portfolio .gitignore
+
+# System files
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (falls später verwendet)
+node_modules/
+npm-debug.log
+
+# Build outputs (falls später verwendet)
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Cache
+.cache/

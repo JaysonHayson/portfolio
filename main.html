@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jesse Dev Portfolio - Web Developer</title>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <nav class="nav">
+          <div class="logo">
+            <span class="pixel-text">&lt;DEV/&gt;</span>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li>
+              <button class="theme-toggle" onclick="langManager.toggleTheme()">
+                Modern
+              </button>
+            </li>
+            <li>
+              <button
+                class="lang-toggle"
+                onclick="langManager.toggleLanguage()"
+              >
+                DE
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1
+              class="glitch-text typewriter fade-in-title"
+              data-text="Application Developer"
+            >
+              Application Developer
+            </h1>
+            <h2 class="subtitle typewriter-subtitle fade-in-subtitle">
+              Recently certified, highly motivated
+            </h2>
+            <p class="description typewriter-description fade-in-description">
+              With passion for clean code and innovative solutions, I develop
+              modern web applications
+            </p>
+            <div class="cta-buttons">
+              <button
+                class="btn btn-primary"
+                onclick="scrollToSection('projects')"
+              >
+                View Projects
+              </button>
+              <button
+                class="btn btn-secondary"
+                onclick="scrollToSection('contact')"
+              >
+                Contact Me
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about">
+        <div class="section-content">
+          <h2 class="section-title scroll-animate">About Me</h2>
+          <div class="about-grid">
+            <div class="about-text scroll-animate-left">
+              <p class="pixel-text-block">
+                Hello! I'm a passionate web developer with a love for pixel art
+                aesthetics and clean code. Currently expanding my skills in
+                modern web technologies, focusing on React for frontend
+                development and Spring framework for backend solutions.
+              </p>
+              <div class="stats">
+                <div class="stat-item scroll-animate-scale stagger-delay-1">
+                  <span class="stat-number">∞</span>
+                  <span class="stat-label">Lines of Code</span>
+                </div>
+                <div class="stat-item scroll-animate-scale stagger-delay-2">
+                  <span class="stat-number">24/7</span>
+                  <span class="stat-label">Learning Mode</span>
+                </div>
+                <div class="stat-item scroll-animate-scale stagger-delay-3">
+                  <span class="stat-number">100%</span>
+                  <span class="stat-label">Pixel Perfect</span>
+                </div>
+              </div>
+            </div>
+            <div class="about-visual scroll-animate-right">
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-title">developer.js</span>
+                  <div class="window-controls">
+                    <span class="control minimize"></span>
+                    <span class="control maximize"></span>
+                    <span class="control close"></span>
+                  </div>
+                </div>
+                <div class="code-content">
+                  <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
+  <span class="property">role</span>: <span class="string">"Fachinformatiker Anwendungsentwicklung"</span>,
+  <span class="property">skills</span>: [<span class="string">"HTML5"</span>, <span class="string">"CSS3"</span>, <span class="string">"JavaScript"</span>, <span class="string">"PHP"</span>, <span class="string">"MySQL"</span>, <span class="string">"Apache"</span>, <span class="string">"Git"</span>],
+  <span class="property">learning</span>: [<span class="string">"React"</span>, <span class="string">"Spring Framework"</span>],
+  <span class="property">passion</span>: <span class="string">"Clean Code & Innovation"</span>,
+  <span class="property">status</span>: <span class="string">"Ready to create amazing things!"</span>
+};</code>
+</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="skills">
+        <div class="section-content">
+          <h2 class="section-title scroll-animate">Tech Stack</h2>
+          <div class="skills-grid">
+            <div class="skill-category scroll-animate-left">
+              <h3 class="category-title">Frontend</h3>
+              <div class="skill-items">
+                <div class="skill-item scroll-animate stagger-delay-1">
+                  <span class="skill-name">HTML5</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-progress="90"></div>
+                  </div>
+                </div>
+                <div class="skill-item scroll-animate stagger-delay-2">
+                  <span class="skill-name">CSS3</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-progress="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item scroll-animate stagger-delay-3">
+                  <span class="skill-name">JavaScript</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-progress="80"></div>
+                  </div>
+                </div>
+                <div class="skill-item learning scroll-animate stagger-delay-4">
+                  <span class="skill-name">React</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-progress="25"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-category scroll-animate-right">
+              <h3 class="category-title">Backend & Tools</h3>
+              <div class="skill-items">
+                <div class="skill-item scroll-animate stagger-delay-1">
+                  <span class="skill-name">PHP</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-progress="85"></div>
+                  </div>
+                </div>
+                <div class="skill-item scroll-animate stagger-delay-2">
+                  <span class="skill-name">MySQL</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-progress="80"></div>
+                  </div>
+                </div>
+                <div class="skill-item scroll-animate stagger-delay-3">
+                  <span class="skill-name">Apache</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-progress="75"></div>
+                  </div>
+                </div>
+                <div class="skill-item scroll-animate stagger-delay-4">
+                  <span class="skill-name">Git/GitHub</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-progress="70"></div>
+                  </div>
+                </div>
+                <div class="skill-item learning scroll-animate stagger-delay-5">
+                  <span class="skill-name">Spring</span>
+                  <div class="skill-bar">
+                    <div class="skill-progress" data-progress="20"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="projects">
+        <div class="section-content">
+          <h2 class="section-title scroll-animate">Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card scroll-animate-scale stagger-delay-1">
+              <div class="project-image">
+                <div class="project-header">
+                  <h3 class="project-title-header">Time Tracking</h3>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Time Tracking</h3>
+                <p class="project-description">
+                  A professional time tracking system built with PHP and MySQL
+                  for employee management.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">CSS3</span>
+                </div>
+                <div class="project-links">
+                  <button
+                    class="project-link"
+                    onclick="openModal('timeTrackingModal')"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="project-card scroll-animate-scale stagger-delay-2">
+              <div class="project-image">
+                <div class="project-header">
+                  <h3 class="project-title-header">React Task Manager</h3>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">React Task Manager</h3>
+                <p class="project-description">
+                  Modern task management app built with React and local storage.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">CSS</span>
+                </div>
+                <div class="project-links">
+                  <button
+                    class="project-link"
+                    onclick="openModal('reactTaskModal')"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="project-card scroll-animate-scale stagger-delay-3">
+              <div class="project-image">
+                <div class="project-header">
+                  <h3 class="project-title-header">Spring API</h3>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Spring API</h3>
+                <p class="project-description">
+                  RESTful API built with Spring Boot for user management system.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag">Spring</span>
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">MySQL</span>
+                </div>
+                <div class="project-links">
+                  <button
+                    class="project-link"
+                    onclick="openModal('springApiModal')"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact">
+        <div class="section-content">
+          <h2 class="section-title scroll-animate">Get In Touch</h2>
+          <div class="contact-content">
+            <div class="contact-info scroll-animate-left">
+              <h3>Let's Build Something Amazing!</h3>
+              <p>
+                I'm always excited to work on new projects and learn from other
+                developers. Feel free to reach out!
+              </p>
+              <div class="contact-methods">
+                <div class="contact-item scroll-animate stagger-delay-1">
+                  <span class="contact-text">jesse.owen.dev@proton.me</span>
+                </div>
+                <div class="contact-item scroll-animate stagger-delay-2">
+                  <span class="contact-text">LinkedIn</span>
+                </div>
+                <div class="contact-item scroll-animate stagger-delay-3">
+                  <span class="contact-text">GitHub</span>
+                </div>
+              </div>
+            </div>
+            <div class="contact-form scroll-animate-right">
+              <form class="pixel-form">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-input"
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-input"
+                    placeholder="Your Email"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <textarea
+                    class="form-input"
+                    rows="5"
+                    placeholder="Your Message"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <p>
+            &copy; 2025 Pixel Dev Portfolio. Crafted with care and lots of
+            pixels.
+          </p>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Privacy</a>
+            <a href="#" class="footer-link">Terms</a>
+            <a href="#" class="footer-link">Credits</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Modals -->
+    <div id="timeTrackingModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Time Tracking System</h2>
+          <span class="close" onclick="closeModal('timeTrackingModal')"
+            >&times;</span
+          >
+        </div>
+        <div class="modal-body">
+          <div class="modal-project-info">
+            <img
+              src="https://via.placeholder.com/600x300/333/fff?text=Time+Tracking+System"
+              alt="Time Tracking System"
+              class="modal-image"
+            />
+            <h3>Project Overview</h3>
+            <p>
+              A comprehensive time tracking solution designed for modern
+              workplaces. This system allows employees to log their working
+              hours, track project time, and generate detailed reports for
+              management.
+            </p>
+
+            <h4>Key Features</h4>
+            <ul>
+              <li>Employee time logging with start/stop functionality</li>
+              <li>Project-based time tracking</li>
+              <li>Automatic break time calculation</li>
+              <li>Monthly and weekly reports</li>
+              <li>Admin dashboard for management oversight</li>
+              <li>Export data to Excel/PDF</li>
+            </ul>
+
+            <h4>Technologies Used</h4>
+            <div class="modal-tech">
+              <span class="tech-tag">PHP 8.0</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Bootstrap</span>
+              <span class="tech-tag">Chart.js</span>
+            </div>
+
+            <p class="project-note">
+              This project demonstrates my skills in PHP backend development and
+              database design.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="reactTaskModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>React Task Manager</h2>
+          <span class="close" onclick="closeModal('reactTaskModal')"
+            >&times;</span
+          >
+        </div>
+        <div class="modal-body">
+          <div class="modal-project-info">
+            <img
+              src="https://via.placeholder.com/600x300/333/fff?text=React+Task+Manager"
+              alt="React Task Manager"
+              class="modal-image"
+            />
+            <h3>Project Overview</h3>
+            <p>
+              A modern, responsive task management application built with React.
+              Features drag-and-drop functionality, local storage persistence,
+              and a clean, intuitive interface.
+            </p>
+
+            <h4>Key Features</h4>
+            <ul>
+              <li>Create, edit, and delete tasks</li>
+              <li>Drag and drop task reordering</li>
+              <li>Task categories and priority levels</li>
+              <li>Local storage for data persistence</li>
+              <li>Responsive design for all devices</li>
+              <li>Dark/light theme toggle</li>
+            </ul>
+
+            <h4>Technologies Used</h4>
+            <div class="modal-tech">
+              <span class="tech-tag">React 18</span>
+              <span class="tech-tag">JavaScript ES6+</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">Local Storage API</span>
+            </div>
+
+            <p class="project-note">
+              This project showcases my learning progress with React and modern
+              JavaScript.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="springApiModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Spring Boot API</h2>
+          <span class="close" onclick="closeModal('springApiModal')"
+            >&times;</span
+          >
+        </div>
+        <div class="modal-body">
+          <div class="modal-project-info">
+            <img
+              src="https://via.placeholder.com/600x300/333/fff?text=Spring+Boot+API"
+              alt="Spring Boot API"
+              class="modal-image"
+            />
+            <h3>Project Overview</h3>
+            <p>
+              A robust RESTful API built with Spring Boot for user management
+              and authentication. Includes JWT token-based security and
+              comprehensive CRUD operations.
+            </p>
+
+            <h4>Key Features</h4>
+            <ul>
+              <li>RESTful API design principles</li>
+              <li>JWT token-based authentication</li>
+              <li>User registration and login</li>
+              <li>Role-based access control</li>
+              <li>Input validation and error handling</li>
+              <li>API documentation with Swagger</li>
+            </ul>
+
+            <h4>Technologies Used</h4>
+            <div class="modal-tech">
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">Spring Security</span>
+              <span class="tech-tag">Java 17</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">JWT</span>
+              <span class="tech-tag">Swagger</span>
+            </div>
+
+            <p class="project-note">
+              This project represents my current learning journey with Spring
+              Boot and Java.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
