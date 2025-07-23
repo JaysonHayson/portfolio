@@ -30,7 +30,6 @@ class PortfolioManager {
     this.setupAnimations();
     this.setupFavicon();
     this.setupModal();
-    this.setupForm();
 
     this.applyTheme(this.currentTheme);
     this.updateLanguage(this.currentLanguage);
@@ -88,7 +87,7 @@ class PortfolioManager {
 
   applyTheme(theme) {
     const body = document.body;
-    
+
     // Add transition class
     body.classList.add("theme-switching");
 
@@ -108,7 +107,7 @@ class PortfolioManager {
         themeToggle.textContent = theme === "retro" ? "Modern" : "Retro";
       }
     };
-    
+
     // Update immediately and after a small delay to ensure DOM is ready
     updateButtonText();
     setTimeout(updateButtonText, 10);
@@ -421,119 +420,6 @@ class PortfolioManager {
         document.body.style.overflow = "";
       }, this.config.modalTransitionTime);
     }
-  }
-
-  // ==========================================
-  // FORM HANDLING
-  // ==========================================
-
-  setupForm() {
-    const form = document.querySelector(".pixel-form");
-    if (form) {
-      form.addEventListener("submit", (e) => this.handleFormSubmit(e));
-    }
-  }
-
-  handleFormSubmit(e) {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
-
-    // Validate form
-    if (!this.validateForm(data)) {
-      this.showNotification("Please fill in all fields", "error");
-      return;
-    }
-
-    // Simulate form submission
-    this.submitForm(data, e.target);
-  }
-
-  validateForm(data) {
-    return (
-      data.name && data.email && data.message && this.isValidEmail(data.email)
-    );
-  }
-
-  isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
-
-  async submitForm(data, form) {
-    const submitBtn = form.querySelector(".btn-primary");
-    const originalText = submitBtn.textContent;
-
-    // Update button state
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
-
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Success
-      this.showNotification("Message sent successfully!", "success");
-      form.reset();
-    } catch (error) {
-      this.showNotification(
-        "Failed to send message. Please try again.",
-        "error"
-      );
-    } finally {
-      // Reset button
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    }
-  }
-
-  showNotification(message, type = "info") {
-    // Create notification element
-    const notification = document.createElement("div");
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-
-    // Style notification
-    Object.assign(notification.style, {
-      position: "fixed",
-      top: "20px",
-      right: "20px",
-      padding: "15px 25px",
-      borderRadius: this.currentTheme === "modern" ? "8px" : "0px",
-      backgroundColor:
-        type === "success"
-          ? "#10b981"
-          : type === "error"
-          ? "#ef4444"
-          : "#3b82f6",
-      color: "white",
-      zIndex: "9999",
-      fontSize: "14px",
-      fontWeight: "bold",
-      boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-      transform: "translateX(100%)",
-      transition: "transform 0.3s ease",
-    });
-
-    document.body.appendChild(notification);
-
-    // Animate in
-    setTimeout(() => {
-      notification.style.transform = "translateX(0)";
-    }, 100);
-
-    // Remove after 5 seconds
-    setTimeout(() => {
-      notification.style.transform = "translateX(100%)";
-      setTimeout(() => {
-        document.body.removeChild(notification);
-      }, 300);
-    }, 5000);
   }
 
   // ==========================================

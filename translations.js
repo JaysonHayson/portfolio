@@ -310,10 +310,10 @@ class LanguageManager {
     this.currentTheme = localStorage.getItem("theme") || "retro";
     this.translations = translations;
     this.initializeTheme();
-    
+
     // Ensure DOM is ready before updating page
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => {
         this.updatePage();
         if (this.currentTheme === "retro") {
           this.startTypewriterEffect();
@@ -382,20 +382,20 @@ class LanguageManager {
 
   // Update animation classes when theme changes
   updateAnimationClasses() {
-    const heroElements = document.querySelectorAll('.hero-fade-retro');
-    heroElements.forEach(element => {
-      if (this.currentTheme === 'retro') {
-        element.classList.add('hero-fade-retro');
+    const heroElements = document.querySelectorAll(".hero-fade-retro");
+    heroElements.forEach((element) => {
+      if (this.currentTheme === "retro") {
+        element.classList.add("hero-fade-retro");
       } else {
-        element.classList.remove('hero-fade-retro');
+        element.classList.remove("hero-fade-retro");
       }
     });
   }
 
   // Start typewriter effect for retro theme
   startTypewriterEffect() {
-    if (this.currentTheme !== 'retro') return;
-    
+    if (this.currentTheme !== "retro") return;
+
     // This function is for compatibility - actual typewriter effect was removed
   }
 
@@ -441,16 +441,16 @@ class LanguageManager {
   // Update all translatable elements on the page
   updatePage() {
     // Update all elements with data-lang attributes
-    const translatableElements = document.querySelectorAll('[data-lang]');
-    
-    translatableElements.forEach(element => {
-      const key = element.getAttribute('data-lang');
+    const translatableElements = document.querySelectorAll("[data-lang]");
+
+    translatableElements.forEach((element) => {
+      const key = element.getAttribute("data-lang");
       const translation = this.t(key);
-      
+
       if (translation) {
         // Update placeholder for form inputs
-        if (element.hasAttribute('placeholder')) {
-          element.setAttribute('placeholder', translation);
+        if (element.hasAttribute("placeholder")) {
+          element.setAttribute("placeholder", translation);
         } else {
           // Update text content for other elements
           element.textContent = translation;
@@ -460,12 +460,12 @@ class LanguageManager {
 
     // Update theme button
     this.updateThemeButton();
-    
+
     // Update language button
     this.updateLanguageButton();
 
     // Restart animations after text change (if in retro theme)
-    if (this.currentTheme === 'retro') {
+    if (this.currentTheme === "retro") {
       this.restartHeroAnimations();
     }
   }
