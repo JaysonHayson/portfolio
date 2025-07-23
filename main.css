@@ -47,7 +47,7 @@
 
 body {
   font-family: "Press Start 2P", monospace;
-  font-size: 12px;
+  font-size: 14px; /* Increased from 12px */
   background: var(--bg-dark);
   color: var(--text-light);
   line-height: 1.8;
@@ -121,8 +121,7 @@ body:not(.theme-modern) {
 .theme-modern h2,
 .theme-modern h3,
 .theme-modern .section-title,
-.theme-modern .hero-title,
-.theme-modern .glitch-text {
+.theme-modern .hero-title {
   font-family: "Playfair Display", serif;
   font-weight: 600;
 }
@@ -243,8 +242,8 @@ body:not(.theme-modern) {
 }
 
 .nav {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -256,6 +255,14 @@ body:not(.theme-modern) {
   font-weight: normal;
   color: var(--primary-color);
   text-shadow: 2px 2px 0px var(--bg-darker), 0 0 10px var(--sepia-shadow);
+  margin-left: 10px;
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  filter: var(--pixel-filter);
+  transition: all 0.3s ease;
 }
 
 .theme-modern .logo {
@@ -269,10 +276,26 @@ body:not(.theme-modern) {
   letter-spacing: -0.25px;
 }
 
+.theme-modern .logo-image {
+  filter: none;
+  opacity: 0.9;
+}
+
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 25px;
+  align-items: center;
+  justify-content: center;
+  grid-column: 2;
+}
+
+.nav-controls {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+  grid-column: 3;
+  margin-right: 10px;
 }
 
 .nav-link {
@@ -284,8 +307,11 @@ body:not(.theme-modern) {
   border: 2px solid transparent;
   position: relative;
   min-width: 70px;
+  height: 44px;
   text-align: center;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 }
 
@@ -308,8 +334,12 @@ body:not(.theme-modern) {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px var(--warm-shadow);
-  min-width: 45px;
+  min-width: 70px;
+  height: 44px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lang-toggle:hover {
@@ -330,11 +360,14 @@ body:not(.theme-modern) {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px var(--warm-shadow);
-  margin-right: 10px;
   position: relative;
   overflow: hidden;
-  min-width: 130px;
+  min-width: 70px;
+  height: 44px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theme-toggle::before {
@@ -376,24 +409,22 @@ body:not(.theme-modern) {
 .theme-modern .theme-toggle {
   border-radius: 6px;
   font-weight: 500;
-  font-size: 12px !important; /* Gleiche Größe wie Retro */
-  padding: 10px 14px !important; /* Gleiche Polsterung */
+  font-size: 12px;
+  padding: 10px 14px;
   border: 2px solid var(--border-color);
   box-shadow: 0 2px 4px var(--warm-shadow);
-  min-width: 45px; /* Angepasst für einheitliche Größe */
+  min-width: 70px;
+  height: 44px;
   letter-spacing: 0.25px;
 }
 
-.theme-modern .theme-toggle {
-  min-width: 130px !important; /* Angepasst für einheitliche Größe */
-}
-
 .theme-modern .nav-link {
-  font-size: 10px !important; /* Force same size */
+  font-size: 12px;
   font-weight: 500;
-  padding: 8px 12px !important; /* Force same padding */
+  padding: 10px 14px;
   border-radius: 6px;
-  min-width: 60px !important; /* Force same width */
+  min-width: 70px;
+  height: 44px;
 }
 
 .theme-modern .lang-toggle:hover,
@@ -414,7 +445,7 @@ body:not(.theme-modern) {
 
 /* Hero Section */
 .hero {
-  min-height: 100vh;
+  height: 100vh; /* Use fixed height instead of min-height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -426,7 +457,7 @@ body:not(.theme-modern) {
   );
   position: relative;
   overflow: hidden;
-  padding-top: 80px; /* Add space for fixed header */
+  box-sizing: border-box; /* Include padding in height calculation */
 }
 
 .hero::before {
@@ -459,10 +490,10 @@ body:not(.theme-modern) {
 .hero-content {
   display: flex;
   align-items: center;
-  gap: 50px;
-  max-width: 1200px;
+  gap: 60px; /* Increased from 50px */
+  max-width: 1400px; /* Increased from 1200px */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 80px 30px 0 30px; /* Increased from 20px */
   z-index: 2;
 }
 
@@ -470,50 +501,59 @@ body:not(.theme-modern) {
 .hero-text {
   flex: 1;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.glitch-text {
-  font-size: 32px;
-  margin-bottom: 15px;
+/* Hero Text Styling */
+.hero-title,
+.subtitle,
+.description {
+  opacity: 1; /* Always visible, no animation hiding */
+}
+
+.hero-title {
+  font-size: 52px; /* Increased from 42px */
+  margin-bottom: 20px;
   position: relative;
   color: var(--text-light);
   text-shadow: 2px 2px 0px var(--bg-darker), 0 0 15px var(--sepia-shadow);
-  opacity: 1; /* Sichtbar per default */
+  letter-spacing: 3px; /* Added letter spacing */
 }
 
 .subtitle {
-  font-size: 14px;
+  font-size: 18px; /* Increased from 14px */
   color: var(--accent-color);
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Increased from 15px */
   text-shadow: 1px 1px 0px var(--bg-darker), 0 0 8px var(--sepia-shadow);
-  opacity: 1; /* Sichtbar per default */
-  transition: opacity 0.8s ease-out;
 }
 
 .description {
-  font-size: 10px;
+  font-size: 14px; /* Increased from 10px */
   color: var(--text-sepia);
-  margin-bottom: 25px;
-  max-width: 400px;
+  margin-bottom: 35px; /* Increased from 25px */
+  max-width: 500px; /* Increased from 400px */
   line-height: 1.6;
   filter: sepia(15%);
-  opacity: 1; /* Sichtbar per default */
-  transition: opacity 0.8s ease-out;
 }
 
 /* Buttons */
 .cta-buttons {
   display: flex;
-  gap: 15px;
+  gap: 25px; /* Increased from 15px */
   flex-wrap: wrap;
+  margin-top: 10px; /* Add some space from description */
+  position: relative; /* Ensure normal flow positioning */
+  z-index: 1;
 }
 
 .btn {
-  padding: 12px 20px;
+  padding: 16px 28px; /* Increased from 12px 20px */
   border: 2px solid var(--border-color);
   background: var(--bg-light);
   font-family: inherit;
-  font-size: 10px;
+  font-size: 12px; /* Increased from 10px */
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -574,8 +614,8 @@ body:not(.theme-modern) {
     );
 }
 
-.theme-modern .glitch-text {
-  font-size: 56px;
+.theme-modern .hero-title {
+  font-size: 64px; /* Increased from 56px */
   font-weight: 700;
   text-shadow: none;
   background: var(--gradient-primary);
@@ -583,7 +623,7 @@ body:not(.theme-modern) {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   transition: all 0.3s ease;
-  letter-spacing: -1.5px;
+  letter-spacing: 2px; /* Changed from -1.5px to positive spacing */
   line-height: 1.1;
   margin-bottom: 16px;
 }
@@ -661,24 +701,43 @@ body:not(.theme-modern) {
 
 /* Sections */
 section {
+  min-height: calc(100vh - 80px); /* Full viewport height minus header */
   padding: 80px 0;
-  position: relative; /* Add this to fix positioning */
+  position: relative;
+  display: flex;
+  align-items: center; /* Center content vertically */
+}
+
+.hero {
+  padding: 0; /* Override section padding for hero */
+  min-height: 100vh; /* Hero takes full viewport height */
 }
 
 .theme-modern section {
+  min-height: calc(100vh - 80px); /* Full viewport height minus header */
   padding: 100px 0;
 }
 
+.theme-modern .hero {
+  padding: 0; /* Override section padding for hero in modern theme */
+  min-height: 100vh; /* Hero takes full viewport height */
+}
+
+.theme-modern .hero-content {
+  padding: 80px 20px 0 20px; /* Ensure consistent padding in modern theme */
+}
+
 .section-content {
-  max-width: 1200px;
+  max-width: 1400px; /* Increased from 1200px */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 30px; /* Increased from 20px */
+  width: 100%;
 }
 
 .section-title {
-  font-size: 20px;
+  font-size: 28px; /* Increased from 20px */
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px; /* Increased from 40px */
   color: var(--text-light);
   position: relative;
   text-shadow: 2px 2px 0px var(--bg-darker), 0 0 10px var(--sepia-shadow);
@@ -707,21 +766,21 @@ section {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 60px; /* Increased from 40px */
   align-items: start;
 }
 
 .pixel-text-block {
-  font-size: 10px;
+  font-size: 14px; /* Increased from 10px */
   line-height: 1.8;
-  margin-bottom: 25px;
+  margin-bottom: 35px; /* Increased from 25px */
   color: var(--text-sepia);
   filter: sepia(20%);
 }
 
 .stats {
   display: flex;
-  gap: 15px;
+  gap: 25px; /* Increased from 15px */
   flex-wrap: wrap;
 }
 
@@ -953,10 +1012,12 @@ section {
 }
 
 .project-title {
-  font-size: 12px;
+  font-size: 18px;
   color: var(--text-light);
   margin-bottom: 10px;
   text-shadow: 1px 1px 0px var(--bg-darker), 0 0 8px var(--sepia-shadow);
+  text-align: left;
+  font-weight: bold;
 }
 
 .project-description {
@@ -1132,22 +1193,49 @@ section {
   text-shadow: 0 0 5px var(--sepia-shadow);
 }
 
-/* Responsive Design */
+/* Responsive Design - Tablet */
 @media (max-width: 768px) {
+  /* Better container sizing for tablets */
+  .section-content {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  /* Navigation - Improved tablet layout */
   .nav {
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 15px;
+    grid-template-columns: auto 1fr auto;
+    gap: 15px;
+    padding: 0 20px;
   }
 
   .nav-menu {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
   }
 
+  .nav-controls {
+    gap: 12px;
+  }
+
+  .lang-toggle,
+  .theme-toggle,
+  .nav-link {
+    min-width: 55px;
+    font-size: 11px;
+    padding: 8px 12px;
+    height: 40px;
+  }
+
+  /* Hero Section - Tablet */
   .hero {
     padding-top: 120px;
+    padding-bottom: 60px;
   }
 
   .hero-content {
@@ -1156,60 +1244,363 @@ section {
     gap: 30px;
   }
 
-  .glitch-text {
-    font-size: 24px;
+  .hero-title {
+    font-size: 36px;
+    line-height: 1.2;
+    letter-spacing: 2px;
   }
 
+  .theme-modern .hero-title {
+    font-size: 42px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  /* Section Titles */
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  /* Grids */
   .about-grid,
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 30px;
   }
 
   .stats {
     justify-content: center;
     flex-wrap: wrap;
+    gap: 20px;
   }
 
   .skills-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
+  /* Buttons */
   .cta-buttons {
     justify-content: center;
-  }
-
-  .footer-content {
     flex-direction: column;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-content {
-    padding: 0 15px;
-  }
-
-  .glitch-text {
-    font-size: 20px;
-  }
-
-  .section-title {
-    font-size: 16px;
+    gap: 15px;
+    align-items: center;
   }
 
   .btn {
-    padding: 10px 15px;
-    font-size: 9px;
+    min-width: 200px;
+    padding: 12px 24px;
+    font-size: 12px;
   }
 
+  /* Footer */
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  /* Code Block */
+  .code-block {
+    font-size: 12px;
+  }
+
+  /* Project Cards */
+  .project-card {
+    margin: 0 10px;
+  }
+}
+
+/* Mobile - Small screens */
+@media (max-width: 480px) {
+  /* Much better container sizing for mobile */
+  .section-content {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+
+  /* Container and Sections */
+  .hero,
+  .about,
+  .skills,
+  .projects,
+  .contact {
+    padding: 40px 0;
+  }
+
+  /* Navigation - Simplified mobile layout */
+  .nav {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto;
+    gap: 12px;
+    padding: 12px 16px;
+    align-items: center;
+  }
+
+  .logo {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    margin: 0;
+  }
+
+  .nav-menu {
+    display: none; /* Hide navigation menu on mobile */
+  }
+
+  .nav-controls {
+    grid-column: 3;
+    grid-row: 1;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .lang-toggle,
+  .theme-toggle {
+    min-width: 60px;
+    font-size: 10px;
+    padding: 8px 12px;
+    height: 36px;
+  }
+
+  .nav-link {
+    display: none; /* Hide individual nav links on mobile */
+  }
+
+  .logo-image {
+    height: 32px;
+  }
+
+  /* Hero Section - Mobile */
+  .hero {
+    padding-top: 140px;
+    padding-bottom: 40px;
+  }
+
+  .hero-title {
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .theme-modern .hero-title {
+    font-size: 28px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    max-width: 95%;
+  }
+
+  /* Section Titles - Mobile */
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+
+  /* Buttons - Mobile */
+  .cta-buttons {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .btn {
+    min-width: 160px;
+    padding: 12px 20px;
+    font-size: 11px;
+  }
+
+  /* Stats */
+  .stat-item {
+    min-width: 90px;
+  }
+
+  .stat-number {
+    font-size: 16px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  /* Code Block - Mobile */
+  .code-block {
+    font-size: 10px;
+    margin: 20px 0;
+  }
+
+  .code-content {
+    padding: 12px;
+  }
+
+  /* Skills - Mobile */
+  .skill-category {
+    margin-bottom: 25px;
+  }
+
+  .category-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .skill-name {
+    font-size: 11px;
+  }
+
+  /* Projects - Mobile */
+  .project-card {
+    margin: 0;
+  }
+
+  .project-title {
+    font-size: 15px;
+  }
+
+  .project-description {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .tech-tag {
+    font-size: 9px;
+    padding: 4px 6px;
+  }
+
+  /* Contact Form - Mobile */
+  .contact-info h3 {
+    font-size: 16px;
+  }
+
+  .contact-info p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .form-input {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  /* Avatar */
   .avatar-container {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Footer - Mobile */
+  .footer-content {
+    padding: 20px 0;
+  }
+
+  .footer-content p {
+    font-size: 12px;
+  }
+
+  .footer-link {
+    font-size: 11px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .section-content {
+    padding: 0 12px;
+  }
+
+  .hero-content {
+    padding: 0 12px;
+  }
+
+  .hero-title {
+    font-size: 22px;
+    letter-spacing: 0.5px;
+  }
+
+  .theme-modern .hero-title {
+    font-size: 26px;
+    letter-spacing: 0px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .btn {
+    min-width: 140px;
+    font-size: 10px;
+  }
+
+  .nav {
+    padding: 10px 12px;
+  }
+
+  .nav-menu {
+    gap: 6px;
+  }
+
+  .nav-controls {
+    gap: 6px;
+  }
+}
+
+/* Touch-friendly interactions for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .nav-link:hover,
+  .btn:hover,
+  .lang-toggle:hover,
+  .theme-toggle:hover,
+  .project-card:hover {
+    transform: none;
+  }
+
+  .nav-link:active,
+  .btn:active,
+  .lang-toggle:active,
+  .theme-toggle:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  .project-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
   }
 }
 
@@ -1489,11 +1880,12 @@ section {
 }
 
 .theme-modern .project-title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   text-shadow: none;
   margin-bottom: 10px;
   letter-spacing: -0.25px;
+  text-align: left;
 }
 
 .theme-modern .project-description {
@@ -1787,108 +2179,60 @@ section {
   font-size: 11px;
 }
 
-/* Typewriter Animation - Fixed for alignment and cursor position */
-.typewriter {
-  border-right: 3px solid var(--primary-color);
-  min-height: 1.2em;
-  animation: blink-caret 0.75s step-end infinite;
-  text-align: left; /* Left-aligned like other text */
-  margin: 0; /* Remove auto margin */
-  display: inline-block; /* For proper cursor positioning */
+/* Remove typewriter effects - replaced with theme-specific fade-ins */
+
+/* Retro Hero Animations - Cool pixelated fade */
+.hero-fade-retro {
+  animation: retroHeroFade 1.2s ease-out forwards;
 }
 
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: var(--primary-color);
-  }
+/* Modern Hero Animations - Slow feminine fade */
+.hero-fade-modern {
+  animation: modernHeroFade 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-.typewriter-subtitle {
-  opacity: 0;
-  min-height: 1.2em;
-  text-align: left; /* Left-aligned */
-  margin: 0; /* Remove auto margin */
-}
-
-.typewriter-description {
-  opacity: 0;
-  min-height: 1.2em;
-  text-align: left; /* Left-aligned */
-  margin: 0; /* Remove auto margin */
-}
-
-/* Remove old keyframes */
-
-/* Einfache Fade-in Animation für Modern Theme */
-.theme-modern .fade-in-title {
-  opacity: 1;
-  animation: modernFadeIn 1s ease-out 0.2s both;
-}
-
-.theme-modern .fade-in-subtitle {
-  opacity: 1;
-  animation: modernFadeIn 0.8s ease-out 0.6s both;
-}
-
-.theme-modern .fade-in-description {
-  opacity: 1;
-  animation: modernFadeIn 0.8s ease-out 1.0s both;
-}
-
-@keyframes modernFadeIn {
+@keyframes retroHeroFade {
   0% {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(20px) scale(0.95);
+    filter: blur(2px) sepia(30%);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(10px) scale(0.98);
+    filter: blur(1px) sepia(15%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) sepia(0%);
+  }
+}
+
+@keyframes modernHeroFade {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(3px);
+  }
+  30% {
+    opacity: 0.2;
+    transform: translateY(25px);
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translateY(10px);
+    filter: blur(1px);
+  }
+  85% {
+    opacity: 0.9;
+    transform: translateY(2px);
+    filter: blur(0);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
-}
-
-/* Retro theme states - proper visibility control */
-.theme-retro .typewriter {
-  opacity: 1; /* Visible for typing */
-  text-align: left;
-  margin: 0;
-}
-
-.theme-retro .typewriter-subtitle {
-  opacity: 0; /* Hidden until animation starts */
-  text-align: left;
-  margin: 0;
-}
-
-.theme-retro .typewriter-description {
-  opacity: 0; /* Hidden until animation starts */
-  text-align: left;
-  margin: 0;
-}
-
-/* Remove animations from Modern theme typewriter classes */
-.theme-modern .typewriter,
-.theme-modern .typewriter-subtitle,
-.theme-modern .typewriter-description {
-  border-right: none !important;
-  animation: none !important;
-  white-space: normal;
-  overflow: visible;
-  opacity: 1 !important;
-  text-align: left;
-  margin: 0;
-}
-
-/* Remove animations from Retro theme fade-in classes */
-.theme-retro .fade-in-title,
-.theme-retro .fade-in-subtitle,
-.theme-retro .fade-in-description {
-  animation: none !important;
-  opacity: 1 !important;
-  transform: none;
-  text-align: left;
-  margin: 0;
 }

@@ -1,6 +1,3 @@
-// Simple Portfolio JavaScript with Scroll Animations
-
-// Smooth scrolling for navigation
 function scrollToSection(sectionId) {
   const element = document.getElementById(sectionId);
   if (element) {

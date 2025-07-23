@@ -50,6 +50,7 @@ const translations = {
     // Projects Section
     projects: {
       title: "Projects",
+      viewDetails: "View Details",
       timeTracking: {
         title: "Time Tracking",
         description:
@@ -61,12 +62,11 @@ const translations = {
           "Modern task management app built with React and local storage.",
       },
       springApi: {
-        title: "Spring API",
+        title: "Spring Boot API",
         description:
           "RESTful API built with Spring Boot for user management system.",
       },
       viewCode: "View Code",
-      viewDetails: "View Details",
     },
 
     // Modal Content
@@ -75,15 +75,15 @@ const translations = {
         title: "Time Tracking System",
         overview: "Project Overview",
         description:
-          "A comprehensive time tracking solution designed for modern workplaces. This system allows employees to log their working hours, track project time, and generate detailed reports for management.",
+          "A comprehensive time tracking solution for modern workplaces. This system allows employees to clock in/out, track project time, and generate detailed reports for management.",
         features: "Key Features",
         featuresList: [
-          "Employee time logging with start/stop functionality",
-          "Project-based time tracking",
+          "Employee time tracking with start/stop functionality",
+          "Project-based time allocation",
           "Automatic break time calculation",
           "Monthly and weekly reports",
-          "Admin dashboard for management oversight",
-          "Export data to Excel/PDF",
+          "Admin dashboard for management overview",
+          "Data export to Excel/PDF",
         ],
         technologies: "Technologies Used",
         note: "This project demonstrates my skills in PHP backend development and database design.",
@@ -92,7 +92,7 @@ const translations = {
         title: "React Task Manager",
         overview: "Project Overview",
         description:
-          "A modern, responsive task management application built with React. Features drag-and-drop functionality, local storage persistence, and a clean, intuitive interface.",
+          "A modern, responsive task management application built with React. Features drag-and-drop functionality, local storage persistence, and a clean, intuitive user interface.",
         features: "Key Features",
         featuresList: [
           "Create, edit, and delete tasks",
@@ -130,7 +130,7 @@ const translations = {
       subtitle: "Let's work together!",
       description:
         "As a motivated IT specialist in application development, I'm ready for new challenges. I look forward to exciting projects and the opportunity to apply and further develop my skills.",
-      email: "your.email@example.com",
+      email: "jesse.owen.dev@proton.me",
       linkedin: "LinkedIn",
       github: "GitHub",
       form: {
@@ -148,9 +148,6 @@ const translations = {
     footer: {
       copyright:
         "IT Specialist Portfolio. Developed with passion and fresh ideas.",
-      privacy: "Privacy",
-      terms: "Terms",
-      credits: "Credits",
     },
   },
 
@@ -204,6 +201,7 @@ const translations = {
     // Projects Section
     projects: {
       title: "Projekte",
+      viewDetails: "Details anzeigen",
       timeTracking: {
         title: "Time Tracking",
         description:
@@ -220,7 +218,6 @@ const translations = {
           "RESTful API entwickelt mit Spring Boot für ein Benutzerverwaltungssystem.",
       },
       viewCode: "Code ansehen",
-      viewDetails: "Details anzeigen",
     },
 
     // Modal Content
@@ -284,7 +281,7 @@ const translations = {
       subtitle: "Lassen Sie uns zusammenarbeiten!",
       description:
         "Als motivierter Fachinformatiker für Anwendungsentwicklung bin ich bereit für neue Herausforderungen. Ich freue mich auf spannende Projekte und die Möglichkeit, meine Skills einzusetzen und weiterzuentwickeln.",
-      email: "ihre.email@example.com",
+      email: "jesse.owen.dev@proton.me",
       linkedin: "LinkedIn",
       github: "GitHub",
       form: {
@@ -302,9 +299,6 @@ const translations = {
     footer: {
       copyright:
         "Fachinformatiker Portfolio. Mit Leidenschaft und frischen Ideen entwickelt.",
-      privacy: "Datenschutz",
-      terms: "AGB",
-      credits: "Credits",
     },
   },
 };
@@ -316,13 +310,22 @@ class LanguageManager {
     this.currentTheme = localStorage.getItem("theme") || "retro";
     this.translations = translations;
     this.initializeTheme();
-    // Initialize page translations and animations
-    setTimeout(() => {
+    
+    // Ensure DOM is ready before updating page
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        this.updatePage();
+        if (this.currentTheme === "retro") {
+          this.startTypewriterEffect();
+        }
+      });
+    } else {
+      // DOM is already ready
       this.updatePage();
       if (this.currentTheme === "retro") {
         this.startTypewriterEffect();
       }
-    }, 100);
+    }
   }
 
   // Initialize theme on page load
@@ -349,178 +352,56 @@ class LanguageManager {
     return false;
   }
 
-  // Simple theme transition animation
+  // Animate theme transition
   animateThemeTransition(callback) {
-    const body = document.body;
-
-    // Add transition class
-    body.classList.add("theme-switching");
-
-    // Execute the theme change
+    document.body.style.transition = "all 0.3s ease";
     setTimeout(() => {
       callback();
     }, 50);
-
-    // Remove transition class after animation completes
     setTimeout(() => {
-      body.classList.remove("theme-switching");
-    }, 300);
+      document.body.style.transition = "";
+    }, 350);
   }
 
   // Toggle between themes
   toggleTheme() {
     const newTheme = this.currentTheme === "retro" ? "modern" : "retro";
-
-    // Add loading effect to button
-    const themeButton = document.querySelector(".theme-toggle");
-    if (themeButton) {
-      themeButton.classList.add("switching");
-      themeButton.style.pointerEvents = "none";
-    }
-
-    // Simple theme switch
-    setTimeout(() => {
-      this.setTheme(newTheme);
-
-      // Remove loading effect after transition
-      setTimeout(() => {
-        if (themeButton) {
-          themeButton.classList.remove("switching");
-          themeButton.style.pointerEvents = "auto";
-        }
-      }, 300);
-    }, 25);
+    this.setTheme(newTheme);
   }
 
   // Update theme button text
   updateThemeButton() {
     const themeToggle = document.querySelector(".theme-toggle");
     if (themeToggle) {
-      const buttonText =
+      themeToggle.textContent =
         this.currentTheme === "retro"
           ? this.t("theme.modern")
           : this.t("theme.retro");
-      themeToggle.textContent = buttonText;
     }
-
-    // Update animation classes based on theme
-    this.updateAnimationClasses();
   }
 
-  // Update animation classes based on current theme
+  // Update animation classes when theme changes
   updateAnimationClasses() {
-    const glitchText = document.querySelector(".glitch-text");
-    const subtitle = document.querySelector(".subtitle");
-    const description = document.querySelector(".description");
-
-    // Erst alle Animationsklassen entfernen
-    if (glitchText) {
-      glitchText.className = "glitch-text";
-      glitchText.style.opacity = "1";
-      glitchText.style.animation = "none";
-    }
-    if (subtitle) {
-      subtitle.className = "subtitle";
-      subtitle.style.opacity = "1";
-      subtitle.style.animation = "none";
-    }
-    if (description) {
-      description.className = "description";
-      description.style.opacity = "1";
-      description.style.animation = "none";
-    }
-
-    // Nach kurzer Pause Theme-spezifische Klassen hinzufügen
-    setTimeout(() => {
-      if (this.currentTheme === "retro") {
-        // Retro Theme: Typewriter-Effekt
-        if (glitchText) {
-          glitchText.classList.add("typewriter");
-          glitchText.style.textAlign = "left";
-          glitchText.style.margin = "0";
-          glitchText.style.opacity = "1"; // Für Typing sichtbar
-        }
-        if (subtitle) {
-          subtitle.classList.add("typewriter-subtitle");
-          subtitle.style.textAlign = "left";
-          subtitle.style.margin = "0";
-          subtitle.style.opacity = "0"; // Versteckt bis Animation
-        }
-        if (description) {
-          description.classList.add("typewriter-description");
-          description.style.textAlign = "left";
-          description.style.margin = "0";
-          description.style.opacity = "0"; // Versteckt bis Animation
-        }
-        
-        // Typewriter-Effekt starten
-        setTimeout(() => this.startTypewriterEffect(), 200);
-        
+    const heroElements = document.querySelectorAll('.hero-fade-retro');
+    heroElements.forEach(element => {
+      if (this.currentTheme === 'retro') {
+        element.classList.add('hero-fade-retro');
       } else {
-        // Modern Theme: CSS Fade-in Animation
-        if (glitchText) {
-          glitchText.classList.add("fade-in-title");
-          glitchText.textContent = this.t("hero.title");
-        }
-        if (subtitle) {
-          subtitle.classList.add("fade-in-subtitle");
-          subtitle.textContent = this.t("hero.subtitle");  
-        }
-        if (description) {
-          description.classList.add("fade-in-description");
-          description.textContent = this.t("hero.description");
-        }
+        element.classList.remove('hero-fade-retro');
       }
-    }, 50);
+    });
   }
 
-  // Restart hero animations
+  // Start typewriter effect for retro theme
+  startTypewriterEffect() {
+    if (this.currentTheme !== 'retro') return;
+    
+    // This function is for compatibility - actual typewriter effect was removed
+  }
+
+  // Restart hero animations after language change
   restartHeroAnimations() {
-    // Einfach updateAnimationClasses aufrufen
-    this.updateAnimationClasses();
-  }
-
-  // Simplified typewriter effect - only for title
-  async startTypewriterEffect() {
-    const glitchText = document.querySelector(".glitch-text");
-    const subtitle = document.querySelector(".subtitle");
-    const description = document.querySelector(".description");
-
-    if (!glitchText || !subtitle || !description) return;
-
-    const titleText = this.t("hero.title");
-
-    // Reset all elements to initial state
-    glitchText.textContent = "";
-    glitchText.style.opacity = "1"; // Show title element for typing
-    subtitle.style.opacity = "0";
-    description.style.opacity = "0";
-
-    // Type only the title
-    await this.typeText(glitchText, titleText, 80);
-
-    // Show subtitle with fade-in
-    await this.delay(500);
-    subtitle.style.transition = "opacity 0.8s ease-out";
-    subtitle.style.opacity = "1";
-
-    // Show description with fade-in
-    await this.delay(800);
-    description.style.transition = "opacity 0.8s ease-out";
-    description.style.opacity = "1";
-  }
-
-  // Type text character by character
-  async typeText(element, text, speed = 100) {
-    for (let i = 0; i <= text.length; i++) {
-      element.textContent = text.substring(0, i);
-      await this.delay(speed + Math.random() * 30); // Add natural variation
-    }
-  }
-
-  // Delay helper
-  delay(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+    // This function is for compatibility - animations are now CSS-based
   }
 
   // Get current language
@@ -530,7 +411,7 @@ class LanguageManager {
 
   // Set language and save to localStorage
   setLanguage(lang) {
-    if (this.translations[lang]) {
+    if (lang === "en" || lang === "de") {
       this.currentLanguage = lang;
       localStorage.setItem("language", lang);
       this.updatePage();
@@ -559,169 +440,42 @@ class LanguageManager {
 
   // Update all translatable elements on the page
   updatePage() {
-    // Safely update navigation
-    const homeLink = document.querySelector('a[href="#home"]');
-    const aboutLink = document.querySelector('a[href="#about"]');
-    const skillsLink = document.querySelector('a[href="#skills"]');
-    const projectsLink = document.querySelector('a[href="#projects"]');
-    const contactLink = document.querySelector('a[href="#contact"]');
-
-    if (homeLink) homeLink.textContent = this.t("nav.home");
-    if (aboutLink) aboutLink.textContent = this.t("nav.about");
-    if (skillsLink) skillsLink.textContent = this.t("nav.skills");
-    if (projectsLink) projectsLink.textContent = this.t("nav.projects");
-    if (contactLink) contactLink.textContent = this.t("nav.contact");
-
-    // Safely update hero section
-    const glitchText = document.querySelector(".glitch-text");
-    const subtitle = document.querySelector(".subtitle");
-    const description = document.querySelector(".description");
-
-    if (glitchText) glitchText.textContent = this.t("hero.title");
-    if (subtitle) subtitle.textContent = this.t("hero.subtitle");
-    if (description) description.textContent = this.t("hero.description");
-
-    const viewProjectsBtn = document.querySelector(
-      'button[onclick*="projects"]'
-    );
-    const contactBtn = document.querySelector('button[onclick*="contact"]');
-
-    if (viewProjectsBtn)
-      viewProjectsBtn.textContent = this.t("hero.viewProjects");
-    if (contactBtn) contactBtn.textContent = this.t("hero.contactMe");
-
-    // Restart animations after text change
-    this.restartHeroAnimations();
-
-    // Safely update about section
-    const aboutTitle = document.querySelector("#about .section-title");
-    const pixelTextBlock = document.querySelector(".pixel-text-block");
-
-    if (aboutTitle) aboutTitle.textContent = this.t("about.title");
-    if (pixelTextBlock)
-      pixelTextBlock.textContent = this.t("about.description");
-
-    // Safely update stats
-    const statLabels = document.querySelectorAll(".stat-label");
-    if (statLabels[0])
-      statLabels[0].textContent = this.t("about.stats.linesOfCode");
-    if (statLabels[1])
-      statLabels[1].textContent = this.t("about.stats.learningMode");
-    if (statLabels[2])
-      statLabels[2].textContent = this.t("about.stats.pixelPerfect");
-
-    // Safely update skills section
-    const skillsTitle = document.querySelector("#skills .section-title");
-    if (skillsTitle) skillsTitle.textContent = this.t("skills.title");
-
-    const categoryTitles = document.querySelectorAll(".category-title");
-    if (categoryTitles[0])
-      categoryTitles[0].textContent = this.t("skills.frontend");
-    if (categoryTitles[1])
-      categoryTitles[1].textContent = this.t("skills.backend");
-
-    // Safely update projects section
-    const projectsTitle = document.querySelector("#projects .section-title");
-    if (projectsTitle) projectsTitle.textContent = this.t("projects.title");
-
-    const projectTitles = document.querySelectorAll(".project-title");
-    const projectTitleHeaders = document.querySelectorAll(
-      ".project-title-header"
-    );
-    const projectDescriptions = document.querySelectorAll(
-      ".project-description"
-    );
-
-    if (projectTitles[0])
-      projectTitles[0].textContent = this.t("projects.timeTracking.title");
-    if (projectTitleHeaders[0])
-      projectTitleHeaders[0].textContent = this.t(
-        "projects.timeTracking.title"
-      );
-    if (projectDescriptions[0])
-      projectDescriptions[0].textContent = this.t(
-        "projects.timeTracking.description"
-      );
-
-    if (projectTitles[1])
-      projectTitles[1].textContent = this.t("projects.reactApp.title");
-    if (projectTitleHeaders[1])
-      projectTitleHeaders[1].textContent = this.t("projects.reactApp.title");
-    if (projectDescriptions[1])
-      projectDescriptions[1].textContent = this.t(
-        "projects.reactApp.description"
-      );
-
-    if (projectTitles[2])
-      projectTitles[2].textContent = this.t("projects.springApi.title");
-    if (projectTitleHeaders[2])
-      projectTitleHeaders[2].textContent = this.t("projects.springApi.title");
-    if (projectDescriptions[2])
-      projectDescriptions[2].textContent = this.t(
-        "projects.springApi.description"
-      );
-
-    // Safely update project links
-    document.querySelectorAll(".project-link").forEach((link) => {
-      if (
-        link.textContent.includes("Code") ||
-        link.textContent.includes("ansehen")
-      ) {
-        link.textContent = this.t("projects.viewCode");
-      } else if (
-        link.textContent.includes("Details") ||
-        link.textContent.includes("anzeigen")
-      ) {
-        link.textContent = this.t("projects.viewDetails");
+    // Update all elements with data-lang attributes
+    const translatableElements = document.querySelectorAll('[data-lang]');
+    
+    translatableElements.forEach(element => {
+      const key = element.getAttribute('data-lang');
+      const translation = this.t(key);
+      
+      if (translation) {
+        // Update placeholder for form inputs
+        if (element.hasAttribute('placeholder')) {
+          element.setAttribute('placeholder', translation);
+        } else {
+          // Update text content for other elements
+          element.textContent = translation;
+        }
       }
     });
 
-    // Safely update contact section
-    const contactTitle = document.querySelector("#contact .section-title");
-    const contactSubtitle = document.querySelector(".contact-info h3");
-    const contactDesc = document.querySelector(".contact-info p");
+    // Update theme button
+    this.updateThemeButton();
+    
+    // Update language button
+    this.updateLanguageButton();
 
-    if (contactTitle) contactTitle.textContent = this.t("contact.title");
-    if (contactSubtitle)
-      contactSubtitle.textContent = this.t("contact.subtitle");
-    if (contactDesc) contactDesc.textContent = this.t("contact.description");
+    // Restart animations after text change (if in retro theme)
+    if (this.currentTheme === 'retro') {
+      this.restartHeroAnimations();
+    }
+  }
 
-    // Safely update contact methods
-    const contactTexts = document.querySelectorAll(".contact-text");
-    if (contactTexts[0]) contactTexts[0].textContent = this.t("contact.email");
-    if (contactTexts[1])
-      contactTexts[1].textContent = this.t("contact.linkedin");
-    if (contactTexts[2]) contactTexts[2].textContent = this.t("contact.github");
-
-    // Safely update form placeholders
-    const nameInput = document.querySelector('input[type="text"]');
-    const emailInput = document.querySelector('input[type="email"]');
-    const messageInput = document.querySelector("textarea");
-    const submitBtn = document.querySelector('button[type="submit"]');
-
-    if (nameInput) nameInput.placeholder = this.t("contact.form.name");
-    if (emailInput) emailInput.placeholder = this.t("contact.form.email");
-    if (messageInput) messageInput.placeholder = this.t("contact.form.message");
-    if (submitBtn) submitBtn.textContent = this.t("contact.form.send");
-
-    // Safely update footer
-    const footerText = document.querySelector(".footer-content p");
-    if (footerText)
-      footerText.innerHTML = `&copy; 2025 ${this.t("footer.copyright")}`;
-
-    const footerLinks = document.querySelectorAll(".footer-link");
-    if (footerLinks[0]) footerLinks[0].textContent = this.t("footer.privacy");
-    if (footerLinks[1]) footerLinks[1].textContent = this.t("footer.terms");
-    if (footerLinks[2]) footerLinks[2].textContent = this.t("footer.credits");
-
-    // Safely update language toggle button text
+  // Update language button text
+  updateLanguageButton() {
     const langToggle = document.querySelector(".lang-toggle");
     if (langToggle) {
       langToggle.textContent = this.currentLanguage === "en" ? "DE" : "EN";
     }
-
-    // Update theme toggle button text
-    this.updateThemeButton();
   }
 
   // Toggle between languages
@@ -752,17 +506,16 @@ class LanguageManager {
     if (overviewTitle) overviewTitle.textContent = modal.overview;
 
     // Update description
-    const description = modalElement.querySelector(".modal-project-info p");
+    const description = modalElement.querySelector(".project-description-full");
     if (description) description.textContent = modal.description;
 
     // Update features title
-    const featuresTitle = modalElement.querySelector("h4");
+    const featuresTitle = modalElement.querySelectorAll("h4")[0];
     if (featuresTitle) featuresTitle.textContent = modal.features;
 
-    // Update features list
-    const featuresList = modalElement.querySelector("ul");
-    if (featuresList && modal.featuresList) {
-      const listItems = featuresList.querySelectorAll("li");
+    // Update feature list items
+    const listItems = modalElement.querySelectorAll(".feature-list li");
+    if (modal.featuresList && listItems.length > 0) {
       modal.featuresList.forEach((feature, index) => {
         if (listItems[index]) {
           listItems[index].textContent = feature;

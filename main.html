@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jesse Dev Portfolio - Web Developer</title>
+    <title>Jesse Owen - Fachinformatiker Portfolio</title>
     <link rel="stylesheet" href="main.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
@@ -16,28 +16,21 @@
       <header class="header">
         <nav class="nav">
           <div class="logo">
-            <span class="pixel-text">&lt;DEV/&gt;</span>
+            <img src="jesseLogo.png" alt="Jesse Logo" class="logo-image" />
           </div>
           <ul class="nav-menu">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-            <li>
-              <button class="theme-toggle" onclick="langManager.toggleTheme()">
-                Modern
-              </button>
-            </li>
-            <li>
-              <button
-                class="lang-toggle"
-                onclick="langManager.toggleLanguage()"
-              >
-                DE
-              </button>
-            </li>
+            <li><a href="#home" class="nav-link" data-lang="nav.home"></a></li>
+            <li><a href="#about" class="nav-link" data-lang="nav.about"></a></li>
+            <li><a href="#skills" class="nav-link" data-lang="nav.skills"></a></li>
+            <li><a href="#projects" class="nav-link" data-lang="nav.projects"></a></li>
+            <li><a href="#contact" class="nav-link" data-lang="nav.contact"></a></li>
           </ul>
+          <div class="nav-controls">
+            <button class="theme-toggle">
+            </button>
+            <button class="lang-toggle">
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -45,32 +38,17 @@
       <section id="home" class="hero">
         <div class="hero-content">
           <div class="hero-text">
-            <h1
-              class="glitch-text typewriter fade-in-title"
-              data-text="Application Developer"
-            >
-              Application Developer
+            <h1 class="hero-title hero-fade-retro" data-lang="hero.title">
             </h1>
-            <h2 class="subtitle typewriter-subtitle fade-in-subtitle">
-              Recently certified, highly motivated
+            <h2 class="subtitle hero-fade-retro" data-lang="hero.subtitle">
             </h2>
-            <p class="description typewriter-description fade-in-description">
-              With passion for clean code and innovative solutions, I develop
-              modern web applications
+            <p class="description hero-fade-retro" data-lang="hero.description">
             </p>
             <div class="cta-buttons">
-              <button
-                class="btn btn-primary"
-                onclick="scrollToSection('projects')"
-              >
-                View Projects
-              </button>
-              <button
-                class="btn btn-secondary"
-                onclick="scrollToSection('contact')"
-              >
-                Contact Me
-              </button>
+              <a href="#projects" class="btn btn-primary" data-lang="hero.viewProjects">
+              </a>
+              <a href="#contact" class="btn btn-secondary" data-lang="hero.contactMe">
+              </a>
             </div>
           </div>
         </div>
@@ -79,27 +57,27 @@
       <!-- About Section -->
       <section id="about" class="about">
         <div class="section-content">
-          <h2 class="section-title scroll-animate">About Me</h2>
+          <h2 class="section-title scroll-animate" data-lang="about.title">
+          </h2>
           <div class="about-grid">
             <div class="about-text scroll-animate-left">
-              <p class="pixel-text-block">
-                Hello! I'm a passionate web developer with a love for pixel art
-                aesthetics and clean code. Currently expanding my skills in
-                modern web technologies, focusing on React for frontend
-                development and Spring framework for backend solutions.
+              <p class="pixel-text-block" data-lang="about.description">
               </p>
               <div class="stats">
                 <div class="stat-item scroll-animate-scale stagger-delay-1">
                   <span class="stat-number">∞</span>
-                  <span class="stat-label">Lines of Code</span>
+                  <span class="stat-label" data-lang="about.stats.linesOfCode">
+                  </span>
                 </div>
                 <div class="stat-item scroll-animate-scale stagger-delay-2">
                   <span class="stat-number">24/7</span>
-                  <span class="stat-label">Learning Mode</span>
+                  <span class="stat-label" data-lang="about.stats.learningMode">
+                  </span>
                 </div>
                 <div class="stat-item scroll-animate-scale stagger-delay-3">
                   <span class="stat-number">100%</span>
-                  <span class="stat-label">Pixel Perfect</span>
+                  <span class="stat-label" data-lang="about.stats.pixelPerfect">
+                  </span>
                 </div>
               </div>
             </div>
@@ -132,10 +110,14 @@
       <!-- Skills Section -->
       <section id="skills" class="skills">
         <div class="section-content">
-          <h2 class="section-title scroll-animate">Tech Stack</h2>
+          <h2 class="section-title scroll-animate" data-lang="skills.title">
+            <!-- Text wird dynamisch geladen -->
+          </h2>
           <div class="skills-grid">
             <div class="skill-category scroll-animate-left">
-              <h3 class="category-title">Frontend</h3>
+              <h3 class="category-title" data-lang="skills.frontend">
+                <!-- Text wird dynamisch geladen -->
+              </h3>
               <div class="skill-items">
                 <div class="skill-item scroll-animate stagger-delay-1">
                   <span class="skill-name">HTML5</span>
@@ -164,7 +146,9 @@
               </div>
             </div>
             <div class="skill-category scroll-animate-right">
-              <h3 class="category-title">Backend & Tools</h3>
+              <h3 class="category-title" data-lang="skills.backend">
+                <!-- Text wird dynamisch geladen -->
+              </h3>
               <div class="skill-items">
                 <div class="skill-item scroll-animate stagger-delay-1">
                   <span class="skill-name">PHP</span>
@@ -205,19 +189,20 @@
       <!-- Projects Section -->
       <section id="projects" class="projects">
         <div class="section-content">
-          <h2 class="section-title scroll-animate">Projects</h2>
+          <h2 class="section-title scroll-animate" data-lang="projects.title">
+            <!-- Text wird dynamisch geladen -->
+          </h2>
           <div class="projects-grid">
             <div class="project-card scroll-animate-scale stagger-delay-1">
               <div class="project-image">
                 <div class="project-header">
-                  <h3 class="project-title-header">Time Tracking</h3>
+                  <h3 class="project-title" data-lang="projects.timeTracking.title">
+                  </h3>
                 </div>
               </div>
               <div class="project-content">
-                <h3 class="project-title">Time Tracking</h3>
-                <p class="project-description">
-                  A professional time tracking system built with PHP and MySQL
-                  for employee management.
+                <p class="project-description" data-lang="projects.timeTracking.description">
+                  <!-- Text wird dynamisch geladen -->
                 </p>
                 <div class="project-tech">
                   <span class="tech-tag">PHP</span>
@@ -229,8 +214,9 @@
                   <button
                     class="project-link"
                     onclick="openModal('timeTrackingModal')"
+                    data-lang="projects.viewDetails"
                   >
-                    View Details
+                    <!-- Text wird dynamisch geladen -->
                   </button>
                 </div>
               </div>
@@ -238,13 +224,13 @@
             <div class="project-card scroll-animate-scale stagger-delay-2">
               <div class="project-image">
                 <div class="project-header">
-                  <h3 class="project-title-header">React Task Manager</h3>
+                  <h3 class="project-title" data-lang="projects.reactApp.title">
+                  </h3>
                 </div>
               </div>
               <div class="project-content">
-                <h3 class="project-title">React Task Manager</h3>
-                <p class="project-description">
-                  Modern task management app built with React and local storage.
+                <p class="project-description" data-lang="projects.reactApp.description">
+                  <!-- Text wird dynamisch geladen -->
                 </p>
                 <div class="project-tech">
                   <span class="tech-tag">React</span>
@@ -255,8 +241,9 @@
                   <button
                     class="project-link"
                     onclick="openModal('reactTaskModal')"
+                    data-lang="projects.viewDetails"
                   >
-                    View Details
+                    <!-- Text wird dynamisch geladen -->
                   </button>
                 </div>
               </div>
@@ -264,13 +251,13 @@
             <div class="project-card scroll-animate-scale stagger-delay-3">
               <div class="project-image">
                 <div class="project-header">
-                  <h3 class="project-title-header">Spring API</h3>
+                  <h3 class="project-title" data-lang="projects.springApi.title">
+                  </h3>
                 </div>
               </div>
               <div class="project-content">
-                <h3 class="project-title">Spring API</h3>
-                <p class="project-description">
-                  RESTful API built with Spring Boot for user management system.
+                <p class="project-description" data-lang="projects.springApi.description">
+                  <!-- Text wird dynamisch geladen -->
                 </p>
                 <div class="project-tech">
                   <span class="tech-tag">Spring</span>
@@ -281,8 +268,9 @@
                   <button
                     class="project-link"
                     onclick="openModal('springApiModal')"
+                    data-lang="projects.viewDetails"
                   >
-                    View Details
+                    <!-- Text wird dynamisch geladen -->
                   </button>
                 </div>
               </div>
@@ -294,54 +282,79 @@
       <!-- Contact Section -->
       <section id="contact" class="contact">
         <div class="section-content">
-          <h2 class="section-title scroll-animate">Get In Touch</h2>
+          <h2 class="section-title scroll-animate" data-lang="contact.title">
+            <!-- Text wird dynamisch geladen -->
+          </h2>
           <div class="contact-content">
             <div class="contact-info scroll-animate-left">
-              <h3>Let's Build Something Amazing!</h3>
-              <p>
-                I'm always excited to work on new projects and learn from other
-                developers. Feel free to reach out!
+              <h3 data-lang="contact.subtitle">
+                <!-- Text wird dynamisch geladen -->
+              </h3>
+              <p data-lang="contact.description">
+                <!-- Text wird dynamisch geladen -->
               </p>
               <div class="contact-methods">
                 <div class="contact-item scroll-animate stagger-delay-1">
-                  <span class="contact-text">jesse.owen.dev@proton.me</span>
+                  <span class="contact-text">
+                    📧 jesse.owen.dev@proton.me
+                  </span>
                 </div>
                 <div class="contact-item scroll-animate stagger-delay-2">
-                  <span class="contact-text">LinkedIn</span>
+                  <span class="contact-text" data-lang="contact.linkedin">
+                    <!-- Text wird dynamisch geladen -->
+                  </span>
                 </div>
                 <div class="contact-item scroll-animate stagger-delay-3">
-                  <span class="contact-text">GitHub</span>
+                  <span class="contact-text" data-lang="contact.github">
+                    <!-- Text wird dynamisch geladen -->
+                  </span>
                 </div>
               </div>
             </div>
             <div class="contact-form scroll-animate-right">
-              <form class="pixel-form">
+              <form 
+                class="pixel-form" 
+                action="https://formsubmit.co/jesse.owen.dev@proton.me" 
+                method="POST"
+              >
+                <!-- FormSubmit configuration -->
+                <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://jesseowendev.github.io/portfolio/thank-you.html">
+                
                 <div class="form-group">
                   <input
                     type="text"
+                    name="name"
                     class="form-input"
-                    placeholder="Your Name"
+                    data-lang="contact.form.name"
+                    placeholder="<!-- Text wird dynamisch geladen -->"
                     required
                   />
                 </div>
                 <div class="form-group">
                   <input
                     type="email"
+                    name="email"
                     class="form-input"
-                    placeholder="Your Email"
+                    data-lang="contact.form.email"
+                    placeholder="<!-- Text wird dynamisch geladen -->"
                     required
                   />
                 </div>
                 <div class="form-group">
                   <textarea
+                    name="message"
                     class="form-input"
                     rows="5"
-                    placeholder="Your Message"
+                    data-lang="contact.form.message"
+                    placeholder="<!-- Text wird dynamisch geladen -->"
                     required
                   ></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">
-                  Send Message
+                <button type="submit" class="btn btn-primary" data-lang="contact.form.send">
+                  <!-- Text wird dynamisch geladen -->
                 </button>
               </form>
             </div>
@@ -352,15 +365,9 @@
       <!-- Footer -->
       <footer class="footer">
         <div class="footer-content">
-          <p>
-            &copy; 2025 Pixel Dev Portfolio. Crafted with care and lots of
-            pixels.
+          <p data-lang="footer.copyright">
+            <!-- Text wird dynamisch geladen -->
           </p>
-          <div class="footer-links">
-            <a href="#" class="footer-link">Privacy</a>
-            <a href="#" class="footer-link">Terms</a>
-            <a href="#" class="footer-link">Credits</a>
-          </div>
         </div>
       </footer>
     </div>
@@ -518,6 +525,6 @@
     </div>
 
     <script src="translations.js"></script>
-    <script src="main.js"></script>
+    <script src="portfolio.js"></script>
   </body>
 </html>
