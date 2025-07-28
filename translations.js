@@ -1,11 +1,11 @@
 const translations = {
   en: {
     nav: {
-      home: "Home",
-      about: "About",
+      home: "Start",
+      about: "Über mich",
       skills: "Skills",
-      projects: "Projects",
-      contact: "Contact",
+      projects: "Projekte",
+      contact: "Kontakt",
     },
     theme: {
       retro: "Retro",
@@ -15,16 +15,16 @@ const translations = {
     },
     hero: {
       title: "Developer",
-      subtitle: "Recently certified, highly motivated",
+      subtitle: "Recently trained, full of motivation",
       description:
-        "With passion for clean code and innovative solutions, I develop modern web applications",
+        "With passion for clean code and innovative solutions, I develop modern web applications. Ready to bring fresh ideas and energy to exciting projects!",
       viewProjects: "View Projects",
       contactMe: "Contact Me",
     },
     about: {
-      title: "About Me",
+      title: "Über mich",
       description:
-        "Hello! I'm a motivated young developer and recently certified IT specialist in application development. With solid knowledge in HTML, CSS, PHP, JavaScript, and MySQL, I bring fresh ideas and modern approaches to every project. Currently expanding my skills in React and Spring Framework to develop future-oriented full-stack solutions.",
+        "Hey! Great to have you here! I'm a motivated fresh developer. Recently trained and full of energy. With solid knowledge in HTML, CSS, PHP, JavaScript and MySQL, I bring fresh ideas and the willingness to do more than a classic 9 to 5 job. Always motivated to learn and apply new technologies. Feel free to contact me if you're interested in working together!",
       stats: {
         linesOfCode: "Lines of Code",
         learningMode: "Learning Mode",
@@ -32,12 +32,12 @@ const translations = {
       },
     },
     skills: {
-      title: "Tech Stack",
+      title: "Skills",
       frontend: "Frontend",
       backend: "Backend",
     },
     projects: {
-      title: "Projects",
+      title: "Projekte",
       viewDetails: "View Details",
       timeTracking: {
         title: "Time Tracking",
@@ -110,10 +110,10 @@ const translations = {
       },
     },
     contact: {
-      title: "Get In Touch",
+      title: "Kontakt",
       subtitle: "Let's work together!",
       description:
-        "As a motivated IT specialist in application development, I'm ready for new challenges. I look forward to exciting projects and the opportunity to apply and further develop my skills.",
+        "As a motivated IT specialist in application development, I'm ready for new challenges and exciting projects. Let's create something amazing together - reach out and let's discuss your ideas!",
       email: "jesse.owen.dev@proton.me",
       linkedin: "LinkedIn",
       github: "GitHub",
@@ -157,7 +157,7 @@ const translations = {
     about: {
       title: "Über mich",
       description:
-        "Hallo! Ich bin ein motivierter junger Entwickler und frisch ausgebildeter Fachinformatiker für Anwendungsentwicklung. Mit fundiertem Wissen in HTML, CSS, PHP, JavaScript und MySQL bringe ich frische Ideen und moderne Ansätze in jedes Projekt ein. Derzeit erweitere ich meine Fähigkeiten in React und Spring Framework, um zukunftsorientierte Full-Stack-Lösungen zu entwickeln.",
+        "Hey! Freut mich, dass du hier bist! Ich bin ein motivierter frischer Entwickler. Frisch ausgebildet und voller Tatendrang. Mit soliden Kenntnissen in HTML, CSS, PHP, JavaScript und MySQL bringe ich frische Ideen und die Bereitschaft mehr zu tun als einen klassischen 9 to 5 Job. Stets motiviert neue Technologien zu lernen und anzuwenden. Melde dich gerne bei mir, wenn du Interesse an einer Zusammenarbeit hast!",
       stats: {
         linesOfCode: "Zeilen Code",
         learningMode: "Lern-Modus",
@@ -165,7 +165,7 @@ const translations = {
       },
     },
     skills: {
-      title: "Tech Stack",
+      title: "Skills",
       frontend: "Frontend",
       backend: "Backend & Tools",
     },
@@ -339,8 +339,7 @@ class LanguageManager {
   startTypewriterEffect() {
     if (this.currentTheme !== "retro") return;
   }
-  restartHeroAnimations() {
-  }
+  restartHeroAnimations() {}
   getCurrentLanguage() {
     return this.currentLanguage;
   }
@@ -429,4 +428,3 @@ class LanguageManager {
 }
 const langManager = new LanguageManager();
 const languageManager = langManager;
-

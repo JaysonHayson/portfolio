@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
   </head>
-  <body class="theme-modern">
+  <body>
     <div class="container">
       <header class="header">
         <nav class="nav">
@@ -40,9 +40,6 @@
       </header>
       <section id="home" class="hero">
         <div class="hero-content">
-          <div class="hero-image">
-            <img src="Ich.png" alt="Jesse Owen" class="hero-portrait" />
-          </div>
           <div class="hero-text">
             <h1 class="hero-title hero-fade-retro" data-lang="hero.title"></h1>
             <h2 class="subtitle hero-fade-retro" data-lang="hero.subtitle"></h2>
@@ -73,12 +70,33 @@
           <div class="about-grid">
             <div class="about-text scroll-animate-left">
               <p class="pixel-text-block" data-lang="about.description"></p>
+              <div class="stats">
+                <div class="stat-item scroll-animate-scale stagger-delay-1">
+                  <span class="stat-number">∞</span>
+                  <span class="stat-label" data-lang="about.stats.linesOfCode">
+                  </span>
+                </div>
+                <div class="stat-item scroll-animate-scale stagger-delay-2">
+                  <span class="stat-number">24/7</span>
+                  <span class="stat-label" data-lang="about.stats.learningMode">
+                  </span>
+                </div>
+                <div class="stat-item scroll-animate-scale stagger-delay-3">
+                  <span class="stat-number">100%</span>
+                  <span class="stat-label" data-lang="about.stats.pixelPerfect">
+                  </span>
+                </div>
+              </div>
             </div>
             <div class="about-visual scroll-animate-right">
               <div class="code-block">
                 <div class="code-header">
                   <span class="code-title">developer.js</span>
-                  <div class="window-controls"></div>
+                  <div class="window-controls">
+                    <span class="control minimize"></span>
+                    <span class="control maximize"></span>
+                    <span class="control close"></span>
+                  </div>
                 </div>
                 <div class="code-content">
                   <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
@@ -275,26 +293,27 @@
               <h3 data-lang="contact.subtitle"></h3>
               <p data-lang="contact.description"></p>
               <div class="contact-methods">
-                <a
-                  href="https://www.linkedin.com/in/jesse-owen-b67452308/"
-                  target="_blank"
-                  class="contact-link"
-                >
-                  <div class="contact-item scroll-animate stagger-delay-2">
-                    <span class="contact-text" data-lang="contact.linkedin">
-                    </span>
-                  </div>
-                </a>
-                <a
-                  href="https://github.com/jaysonhayson"
-                  target="_blank"
-                  class="contact-link"
-                >
-                  <div class="contact-item scroll-animate stagger-delay-3">
-                    <span class="contact-text" data-lang="contact.github">
-                    </span>
-                  </div>
-                </a>
+                <div class="contact-item scroll-animate stagger-delay-1">
+                  <span class="contact-text">
+                    📧 jesse.owen.dev@proton.me
+                  </span>
+                </div>
+                <div class="contact-item scroll-animate stagger-delay-2">
+                  <a
+                    href="https://linkedin.com/in/your-profile"
+                    class="contact-link"
+                    data-lang="contact.linkedin"
+                  >
+                  </a>
+                </div>
+                <div class="contact-item scroll-animate stagger-delay-3">
+                  <a
+                    href="https://github.com/your-username"
+                    class="contact-link"
+                    data-lang="contact.github"
+                  >
+                  </a>
+                </div>
               </div>
             </div>
             <div class="contact-form scroll-animate-right">
@@ -306,14 +325,14 @@
                 <input
                   type="hidden"
                   name="_subject"
-                  value="Portfolio Contact - New Message"
+                  value="New Portfolio Contact Message"
                 />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
                 <input
                   type="hidden"
                   name="_next"
-                  value="https://jaysonhayson.github.io/portfolio/thank-you.html"
+                  value="https://jesseowendev.github.io/portfolio/thank-you.html"
                 />
                 <div class="form-group">
                   <input
